@@ -1,0 +1,90 @@
+.container {
+  position: relative;
+  max-width: 300px;
+  margin: 5px;
+ }
+
+.container input {
+  width: 100%;
+  padding: 0;
+  border-width: 1px;
+  height: 36px;
+  padding-left: 10px;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+
+.input {
+  position: relative;
+  width: 100%;
+}
+
+.arrow_container {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-top: -2px;
+  cursor: pointer;
+}
+
+.arrowDown {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: translateY(45deg);
+  -webkit-transform: rotate(45deg);
+}
+
+.arrowUp {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: translateY(225deg);
+  -webkit-transform: rotate(225deg);
+}
+
+
+.options {
+  position: absolute;
+  border-bottom: none;
+  border-top: none;
+  box-sizing: border-box;
+  width: 100%;
+  margin-top: 10px;
+  display: none;
+}
+
+.optionVisibility {
+  display: block;
+}
+
+.optionItems {
+  height: 36px;
+  border: 1px solid #373737;
+  border-bottom: none;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  cursor: pointer;
+  background-color: white;
+}
+
+.optionItems:first-child {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.optionItems:last-child {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-bottom: 1px solid #373737;
+
+}
+
+.optionItems:hover {
+  background-color: #373737;
+  color: white;
+}

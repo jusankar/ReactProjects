@@ -1,0 +1,89 @@
+.box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    width: 200px;
+    background-color:rgba(12, 31, 50, 0.123);
+    color: white;
+    text-align: center;
+    opacity: 0.5;
+  }
+  .active {
+    opacity: 1;
+    background-color: rgba(12, 31, 50, 1);
+  }
+
+  .box.active {
+    opacity: 1;
+    background-color: rgba(12, 31, 50, 1);
+  }
+   .circle{
+    display: flex;
+    flex-wrap: wrap ;
+    position:relative;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .circleColumn1 {
+    background-color: #EF4444;
+  }
+
+  .circleColumn2{
+    background-color: #FAA42B;
+  }
+  .circleColumn3{
+    background-color: #7DD0E1;
+  }
+  
+  .tooltip{
+    position:absolute;
+    border: 1px solid white;
+    background-color: #42729f;
+    border-radius: 5px;
+    padding: 5px;
+    width: 200px;
+    top: calc(50%);
+    left: calc(50%); /* position the tooltip to the left of the circle */
+    text-align: center; /* center the text inside the tooltip */
+    z-index: 999;
+  }
+
+  .toolTipList{
+    color: rgba(63, 183, 207,1);
+  }
+
+  .circle1, .circle2, .circle3 {
+    width: 20px;
+    height: 20px;
+    border: 1px solid black;
+    border-radius: 50%;
+  }
+
+  .circle3{
+    margin-top: -12px;
+  }
+
+  .blackring{
+    display: flex;
+    width: 47px;
+    height: 47px;
+    border: 4px solid black;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+  }
+  .blackcircle{
+    width: 20px;
+    height: 20px;
+    border: 1px solid black;
+    border-radius: 50%;
+    background-color: black;
+  }
+
+  

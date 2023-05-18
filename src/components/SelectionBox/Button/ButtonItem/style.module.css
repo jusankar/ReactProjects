@@ -1,0 +1,30 @@
+.container {
+  flex: auto;
+  flex-direction: row;
+  display: inline-block;
+}
+
+.btn {
+  max-width: 300px;
+  min-width: 100px;
+  border-radius: 50px;
+  height: 35px;
+  margin: 5px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.btn:hover {
+  transform: scale(1.08);
+}
+
+.btn_enable {
+  background-color: #373737;
+  color: white;
+}
+
+.btn_disabled {
+  border-width: 1px;
+  border-color: black;
+  background-color: white;
+  color: black;
+}

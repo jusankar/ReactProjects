@@ -1,0 +1,18 @@
+.xarrow-ring {
+    --ring-size: 24px;
+    --ring-thickness: 2px;
+    position: relative;
+  }
+  
+  .xarrow-ring::before {
+    content: "";
+    position: absolute;
+    top: calc(50% - var(--ring-size) / 2);
+    left: calc(50% - var(--ring-size) / 2);
+    width: var(--ring-size);
+    height: var(--ring-size);
+    border: var(--ring-thickness) solid white;
+    border-radius: 50%;
+    box-sizing: border-box;
+    pointer-events: none;
+  }

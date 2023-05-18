@@ -1,0 +1,35 @@
+.container {
+  margin: 10px;
+  border-radius: 5px;
+  border: 1px solid black;
+}
+.listContent {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+ul {
+  list-style-position: inside;
+  margin: 0; /* remove any margin */
+  padding: 0; /* remove any padding */
+}
+
+li {
+  list-style: none;
+  vertical-align: middle;
+  line-height: 0.8; /* adjust the value as desired */
+}
+li::before {
+  content: "\2022"; /* bullet point character */
+  color: #BBBBBB;
+  display: inline-block; /* make the pseudo-element a block element */
+  vertical-align: middle; /* vertically align the pseudo-element */
+  font-size: 45px; /* adjust the size as desired */
+  margin-right: 8px; /* add some spacing between bullet and text */
+  position: relative; /* enable relative positioning */
+  top: -5px; /* adjust the value as desired to move the bullet up */
+}
+
+.listItem {
+  margin-left: 20px;
+}

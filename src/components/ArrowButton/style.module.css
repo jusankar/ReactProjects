@@ -1,0 +1,37 @@
+.button {
+  position: relative;
+  border: none;
+  min-width: 100px;
+  max-width: 350px;
+  color: white;
+  border-radius: 10px;
+  padding-right: 50px;
+  padding-left: 10px;
+  height: 40px;
+  margin: 15px;
+  display: inline-block;
+  overflow: hidden;
+  background-color: grey;
+  transition: transform 0.2s ease-in-out;
+}
+
+.button::after {
+  content: "→";
+  font-size: 35px;
+  color: white;
+  position: absolute;
+  right: 10px;
+  transform: translateY(-50%);
+  width: 35px;
+  height: 35px;
+  transition: transform 0.2s ease-out;
+}
+
+.button:hover {
+  transform: scale(1.1);
+  background: #373737;
+}
+
+.button:hover::after {
+  transform: translate(10px, -50%);
+}

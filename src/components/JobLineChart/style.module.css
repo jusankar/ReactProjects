@@ -1,0 +1,38 @@
+.mainContainer{
+  display: flex;
+  flex-direction: column;
+  width: 800px;
+  height: 200 px;
+  margin: 10px;
+}
+.container {
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between; /* adds space between child elements */
+}
+
+.leftContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.leftContainer h2{
+  margin-left: 5px;
+}
+
+.rightContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  align-items: center;
+}
+
+.demandContainer{
+  background-color: #373737;
+  color: white;
+  font-weight: bold;
+  border-radius: 50px;
+  padding: 10px;
+  height: 45px;
+
+}

@@ -1,0 +1,32 @@
+.mainContainer{
+  display: flex;
+  flex-direction: column;
+  width: 800px;
+  height: 200 px;
+  margin: 10px;
+}
+.container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.inputContainer{
+     display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    right: 0;
+    left: 0;
+}
+.salaryContainer{
+    display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: flex-end;
+}
+
+.salaryContainer h3 {
+    margin: 0; /* remove default margin */
+  }
+  

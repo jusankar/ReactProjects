@@ -1,0 +1,9 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  border-bottom-style: dotted;
+  border-bottom-width: 2px;
+  border-color: black;
+  margin-bottom: 5px;
+  padding-bottom: 5px;
+}

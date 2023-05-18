@@ -1,0 +1,22 @@
+.carousel {
+  vertical-align: middle;
+  width: 75%;
+}
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: 100%;
+  overflow: auto;
+}
+
+.container::-webkit-scrollbar {
+  background-image: linear-gradient(to right, #f1f0ec, #878787);
+  height: 10px;
+}
+
+.container::-webkit-scrollbar-thumb:horizontal {
+  background-color: rgba(75, 19, 19, 0.71);
+  border-radius: 10px;
+  width: 2px;
+}
