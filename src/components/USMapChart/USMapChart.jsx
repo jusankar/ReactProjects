@@ -6,8 +6,15 @@ import usMSA from "./path/us-msa-map.json";
 import usCounty from "./path/us-county-map.json";
 import ToolTipList from "./ToolTipList/ToolTipList";
 import { ZoomOut } from "react-bootstrap-icons";
+import Legend from "../Legend/Legend";
 
-export default function USMapChart({ locType, mapData, startColor, endColor }) {
+export default function USMapChart({
+  locType,
+  valType,
+  mapData,
+  startColor,
+  endColor,
+}) {
   const [hoveredPath, setHoveredPath] = useState(null);
   const [geoData, setGeoData] = useState({});
   const [geoBG, setGeoBG] = useState({});
@@ -15,6 +22,8 @@ export default function USMapChart({ locType, mapData, startColor, endColor }) {
   const [mapHeight, setMapHeight] = useState(550);
   const [mapTranslateX, setMapTranslateX] = useState(0);
   const [mapTranslateY, setMapTranslateY] = useState(0);
+  const [maxValue, setMaxValue] = useState(0);
+  const [minValue, setMinValue] = useState(0);
   const [mapScale, setMapScale] = useState(1);
 
   useEffect(() => {
@@ -54,15 +63,19 @@ export default function USMapChart({ locType, mapData, startColor, endColor }) {
         }
       });
     setGeoData(geoData);
+    const values = geoData.features
+      .map((feature) => feature.properties.Value)
+      .filter((value) => value !== undefined && value !== null && value !== 0);
+
+    const min = Math.min(...values);
+    const max = Math.max(...values);
+    setMinValue(min);
+    setMaxValue(max);
   }, [mapData, locType, startColor, endColor]);
 
   const getFillColor = (count) => {
     if (count && count !== 0) {
-      const max = geoData.features.reduce((maxValue, feature) => {
-        const value = feature.properties.Value || 0;
-        return Math.max(maxValue, value);
-      }, 0);
-      const percent = count / max;
+      const percent = count / maxValue;
       return d3.interpolateRgb(
         startColor ? startColor : "rgba(183, 193, 198, 1)",
         endColor ? endColor : " rgba(73, 83, 88, 1)"
@@ -75,7 +88,7 @@ export default function USMapChart({ locType, mapData, startColor, endColor }) {
   if (!geoData.features) {
     return null;
   }
-  const projection = d3.geoAlbersUsa().translate([800 / 2, 550 / 2]);
+  const projection = d3.geoAlbersUsa().translate([mapWidth / 2, mapHeight / 2]);
   const path = d3.geoPath().projection(projection);
 
   const handleMouseEnter = (pathId) => {
@@ -104,17 +117,23 @@ export default function USMapChart({ locType, mapData, startColor, endColor }) {
     setMapScale(1);
   };
   return (
-    <div className={s.conatiner}>
+    <div
+      className={s.conatiner}
+      style={{ height: `${mapHeight}px`, width: `${mapWidth}px` }}
+    >
       <svg
         width={mapWidth}
         height={mapHeight}
         viewBox={`0 0 ${mapWidth} ${mapHeight}`}
+        className={s.svgViewBox}
       >
         {/* State background for the MSA map */}
-        {geoBG && geoBG.features &&
+        {geoBG &&
+          geoBG.features &&
           geoBG.features.map((feature) => {
             return (
               <g
+                className={s.mapViewBox}
                 key={locType + feature.properties.AFFGEOID}
                 transform={`translate(${mapTranslateX},${mapTranslateY}) scale(${mapScale})`}
               >
@@ -133,6 +152,8 @@ export default function USMapChart({ locType, mapData, startColor, endColor }) {
             const pathBounds = path.bounds(feature);
             return (
               <g
+                id={feature.properties.AFFGEOID}
+                className={s.mapViewBox}
                 key={locType + feature.properties.AFFGEOID}
                 onMouseEnter={() =>
                   handleMouseEnter(feature.properties.AFFGEOID)
@@ -158,42 +179,49 @@ export default function USMapChart({ locType, mapData, startColor, endColor }) {
               </g>
             );
           })}
-        {/* Tool tip details  */}
-        {geoData &&
-          geoData.features.map((feature) => {
-            const centroid = path.centroid(feature);
-            const toolTipHeight = feature.properties.ToolTip
-              ? 50 + feature.properties.ToolTip.length * 40
-              : 0;
-            return (
-              <g key={feature.properties.AFFGEOID}>
-                {hoveredPath === feature.properties.AFFGEOID &&
-                  centroid[0] &&
-                  centroid[1] && (
-                    <foreignObject
-                      x={centroid[0] + 25}
-                      y={centroid[1] + 20}
-                      width="200"
-                      height={toolTipHeight}
-                      className={s.tooltip}
-                    >
-                      <div className={s.tooltipContent}>
-                        <div className={s.toolTipTitle}>
-                          {feature.properties.NAME}:
-                        </div>
-                        <ToolTipList feature={feature}></ToolTipList>
-                      </div>
-                    </foreignObject>
-                  )}
-              </g>
-            );
-          })}
       </svg>
+      {/* Tool tip details  */}
+      {geoData &&
+        geoData.features &&
+        geoData.features.map((feature) => {
+          const pathElement = document.getElementById(
+            feature.properties.AFFGEOID
+          );
+          const pos = pathElement && pathElement.getBoundingClientRect();
+          return (
+            <div key={feature.properties.AFFGEOID}>
+              {hoveredPath === feature.properties.AFFGEOID && (
+                <div
+                  style={{
+                    top: pos.top + pos.height / 2,
+                    left: pos.left + pos.width,
+                  }}
+                  className={s.tooltip}
+                >
+                  <div className={s.tooltipContent}>
+                    <div className={s.toolTipTitle}>
+                      {feature.properties.NAME}:
+                    </div>
+                    <ToolTipList feature={feature}></ToolTipList>
+                  </div>
+                </div>
+              )}
+            </div>
+          );
+        })}
       {mapScale !== 1 && (
         <button className={s.zoomOut} onClick={handleClick}>
           {"Zoom out "} <ZoomOut size={16} />
         </button>
       )}
+      <Legend
+        title={valType}
+        minValue={minValue}
+        maxValue={maxValue}
+        numIntervals={4}
+        startColor={startColor}
+        endColor={endColor}
+      ></Legend>
     </div>
   );
 }

@@ -1,11 +1,15 @@
 .conatiner {
   position: relative;
-  background-color: rgba(12, 31, 50, 0.8);
-  border: 1px solid black;
-  height: 550px;
-  width: 800px;
-  margin: 25px;
+  background-color: #0C1F32;
 }
+.svgViewBox {
+  position: relative;
+  overflow: hidden;
+}
+.mapViewBox {
+  overflow: hidden;
+}
+
 .stateBGPath {
   stroke: white;
   fill: rgb(240, 239, 239);
@@ -24,21 +28,18 @@
 
 .tooltip {
   position: absolute;
+  overflow: visible;
   z-index: 999;
   border: 1px solid white;
   background-color: #255785;
   border-radius: 5px;
-  width: 200px;
   text-align: left;
 }
 
 .tooltipContent {
+  position: relative;
   color: white;
   padding: 15px;
-}
-
-.toolTipList {
-  color: white;
 }
 
 .toolTipTitle {

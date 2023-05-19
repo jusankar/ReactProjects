@@ -200,9 +200,9 @@ function App() {
     { id: 6, count: 500, title: "Tax Accountant" },
     { id: 7, count: 300, title: "Software Manager" },
     { id: 8, count: 700, title: "Engineer" },
-    { id: 9, count: 200, title: "Clerk" },
+    { id: 9, count: 200, title: "Sr. Clerk" },
     { id: 10, count: 400, title: "Manager Web apps" },
-    { id: 11, count: 150, title: "Clerk" },
+    { id: 11, count: 15, title: "Clerk" },
     { id: 12, count: 2300, title: "Registered Nurse" },
     { id: 13, count: 570, title: "Tester" },
     { id: 14, count: 620, title: "Senior Software Engineer" },
@@ -227,8 +227,8 @@ function App() {
       {/* 9. <BulletList data={list}/> */}
       {/* 10. <NodeChart></NodeChart> */}
       {/* 11. <AutoSelect textPlaceHolder={"e.g. Marketing Specialist..."} buttonText={"View popular skills"} options={options} onChange={(item) => setSelectedOption(item)} selectedKey={selectedOption} /> */}
-      {/* 12. <BubbleChart data={bubbleChartData}/> */}
-      13. <USMapChart locType="msa" mapData={msaData}  />
+      12. <BubbleChart valType={"Job Postings"} data={bubbleChartData} startColor={"rgb(181, 228, 237)"} endColor={"rgb(29, 93, 106)"}/>
+      13. <USMapChart valType={"Job Postings"} locType="state" mapData={stateJobCount} startColor={"rgb(181, 228, 237)"} endColor={"rgb(29, 93, 106)"}  />
       {/* 14. <GaugeChart></GaugeChart> */}
       {/* 15. <InteractiveNodes></InteractiveNodes> */}
       {/* <XArrowLine></XArrowLine> */}

@@ -27,6 +27,7 @@
 
 .tooltip {
   position: absolute;
+  overflow: visible;
   border: 1px solid white;
   background-color: #255785;
   border-radius: 5px;

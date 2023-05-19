@@ -1,0 +1,31 @@
+.legendContainer {
+  background-color: #0C1F32;
+}
+.title {
+  color: white;
+  font-size: large;
+  padding-left: 20px;
+}
+
+.circleContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  margin: 20px;
+}
+.scaleContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.circle {
+  display: flex;
+  flex-direction: row;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: white;
+}
