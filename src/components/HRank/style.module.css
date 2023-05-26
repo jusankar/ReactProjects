@@ -1,0 +1,38 @@
+.mainContainer {
+  display: inline-block;
+  background-color: rgb(12, 31, 50);
+  padding: 20px;
+  color: white;
+  width: 300px;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+
+.bar {
+  margin-right: 0.5px;
+}
+
+.horizontalBar {
+  background-color: rgb(25, 65, 105);
+}
+
+.selectedBar {
+  background-color: rgb(250, 164, 42);
+}
+
+.toolTip {
+  font-size: small;
+  position: absolute;
+  border: 1px solid white;
+  background-color: rgb(25, 65, 105);
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.bottomText {
+  margin-top: 15px;
+}

@@ -7,33 +7,18 @@
     }
   }
   
-  path {
+  .path {
     stroke-dasharray: 1000;
     stroke-dashoffset: 1000;
     animation: pathAnimation 2s ease-in-out forwards;
   }
   
-  path:nth-child(1) {
+  .path:nth-child(1) {
     animation-delay: 0.5s;
   }
-  path:nth-child(2) {
-    animation-delay: 0.8s;
-  }
   
-
-  @keyframes arrowAnimation {
-    0% {
-      opacity: 0; /* Initially hidden */
-      transform: translateX(-100%); /* Start position outside the element */
-    }
-    50% {
-      opacity: 1; /* Fade in */
-      transform: translateX(0%); /* Move to the end position */
-    }
-    100% {
-      opacity: 1; /* Maintain visibility */
-      transform: translateX(0%); /* Maintain end position */
-    }
+  .path:nth-child(2) {
+    animation-delay: 0.8s;
   }
   
   

@@ -1,0 +1,82 @@
+.searchInput {
+  border: 1px solid black;
+  border-radius: 8px;
+  width: 250px;
+  height: 35px;
+  padding-right: 20px;
+  padding-left: 10px;
+  margin-bottom: 10px;
+}
+.searchInput:focus {
+  outline-style: none;
+  border: 2px solid rgba(40, 11, 231, 0.963);
+}
+.close {
+  position: absolute;
+  margin-left: 230px;
+  margin-top: 10px;
+}
+.search {
+  position: absolute;
+  margin-left: 230px;
+  margin-top: 10px;
+}
+
+.options {
+  position: absolute;
+  border-bottom: none;
+  border-top: none;
+  box-sizing: border-box;
+  margin-top: 10px;
+  display: none;
+  z-index: 999;
+}
+
+.optionVisibility {
+  display: block;
+}
+
+.optionItems {
+  display: inline-block;
+  height: 36px;
+  border: 1px solid #373737;
+  border-bottom: none;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  cursor: pointer;
+  background-color: white;
+}
+
+.optionItems:first-child {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.optionItems:last-child {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-bottom: 1px solid #373737;
+}
+
+.optionItems:hover {
+  background-color: #174269;
+  color: white;
+}
+.selectedContainer {
+  display: inline-block;
+  background-color: #22527e;
+  color: white;
+  border-radius: 10px;
+  font-size: large;
+  padding: 5px 10px;
+}
+.selectClose {
+    font-size: 15px;
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+.selectClose:hover {
+    cursor: pointer;
+  }

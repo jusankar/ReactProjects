@@ -1,5 +1,15 @@
-.container{
-    background-color: #373737;
-    height: 100%;
-    width: 100%;
+.container {
+  display: inline-block;
+  background-color: #0c1f32;
+}
+.number {
+  font-size: 5px;
+  font-variant: normal;
+  fill: white;
+  text-anchor:middle;
+}
+.pointNumber {
+  font-variant: normal;
+  font-size: x-small;
+  fill: red;
 }

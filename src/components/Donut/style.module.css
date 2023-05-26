@@ -1,0 +1,40 @@
+.mainContainer{
+    display: inline-block;
+    background-color: rgb(12, 31, 50);
+    padding: 10px;
+}
+.container {
+  position: relative;
+  overflow: visible;
+}
+.toolTip {
+  position: absolute;
+  border: 1px solid black;
+  background-color: white;
+  padding: 5px;
+  border-radius: 4px;
+}
+.legendConatiner {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  margin-left: 10px;
+  color: white;
+  text-align: left;
+}
+.legendConatiner:nth-child(2) {
+    margin-top: 20px;
+}
+.bullet {
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+}
+.percentage {
+    width: 40px; /* Adjust the width as needed */
+  }
+.description {
+    margin-left: 5px;
+  }
+  

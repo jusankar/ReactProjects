@@ -1,0 +1,26 @@
+.mainContainer {
+  background-color: rgb(12, 31, 50);
+  padding: 10px;
+  width: 300px;
+}
+.mainContainer h2 {
+  color: red;
+  font-size: x-large;
+}
+.lineConatiner {
+  display: flex;
+  flex-direction: row;
+  gap: 2px;
+  padding-top: 20px;
+}
+.line {
+  height: 5px;
+  width: 100px;
+  color: white;
+}
+.selectedLine {
+  background-color: rgb(250, 164, 42);
+}
+.unselectedLine {
+  background-color: rgb(25, 65, 105);
+}

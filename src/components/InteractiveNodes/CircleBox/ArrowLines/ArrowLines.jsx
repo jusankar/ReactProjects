@@ -74,6 +74,7 @@ export default function ArrowLines({ start, end }) {
           style={{
             animation: `${s.pathAnimation} 2s forwards`,
           }}
+          className={s.path}
         />
     </g>
   );

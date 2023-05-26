@@ -1,8 +1,42 @@
+import { MSA, STATE,COUNTY } from "./locData";
 import { TEST_STATE_DATA, TEST_MSA_DATA } from "./mapData";
 import { TEST_NODE_DATA } from "./nodeData";
 import { TEST_SKILL_DATA } from "./testdata";
 
 export class DataAPI {
+  static async getLocations(locTypes) {
+    const data = [];
+
+    locTypes.forEach((loc) => {
+      switch (loc) {
+        case "state":
+          const stateData = STATE.reduce((acc, { STATEFP, STUSPS, NAME }) => {
+            acc.push({ id: STATEFP, code: STUSPS, name: NAME });
+            return acc;
+          }, []);
+          data.push(...stateData);
+          break;
+        case "msa":
+          const msaData = MSA.reduce((acc, { CSAFP, GEOID, NAME }) => {
+            acc.push({ id: CSAFP, code: GEOID, name: NAME });
+            return acc;
+          }, []);
+          data.push(...msaData);
+          break;
+        case "county":
+          const countyData = COUNTY.reduce((acc, { COUNTYFP, GEOID, NAME }) => {
+            acc.push({ id: COUNTYFP, code: GEOID, name: NAME });
+            return acc;
+          }, []);
+          data.push(...countyData);
+          break;
+        default:
+          break;
+      }
+    });
+    return data;
+  }
+
   static async getAllData() {
     // return TEST_SKILL_DATA.map(({ id, name }) => ({ id, name }));
 
@@ -28,7 +62,6 @@ export class DataAPI {
     }, []);
     return msaData;
   }
-  
 
   static async getStateSalary() {
     const salary = TEST_STATE_DATA.reduce((result, item) => {
