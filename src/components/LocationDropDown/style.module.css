@@ -23,6 +23,7 @@
 }
 
 .options {
+  display: flex;
   position: absolute;
   border-bottom: none;
   border-top: none;
@@ -30,6 +31,7 @@
   margin-top: 10px;
   display: none;
   z-index: 999;
+  align-items: center;
 }
 
 .optionVisibility {
@@ -37,7 +39,7 @@
 }
 
 .optionItems {
-  display: inline-block;
+  display: flex;
   height: 36px;
   border: 1px solid #373737;
   border-bottom: none;
@@ -46,6 +48,7 @@
   padding: 10px;
   cursor: pointer;
   background-color: white;
+  color: black;
 }
 
 .optionItems:first-child {
@@ -64,19 +67,21 @@
   color: white;
 }
 .selectedContainer {
-  display: inline-block;
+  display:inline-flex;
   background-color: #22527e;
   color: white;
   border-radius: 10px;
   font-size: large;
   padding: 5px 10px;
+  height: 36px;
+  align-items: center;
 }
 .selectClose {
-    font-size: 15px;
-    font-weight: bold;
-    margin-left: 5px;
+  font-size: 15px;
+  font-weight: bold;
+  margin-left: 5px;
 }
 
 .selectClose:hover {
-    cursor: pointer;
-  }
+  cursor: pointer;
+}

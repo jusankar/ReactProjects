@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import s from "./style.module.css";
 import {
   XCircleFill as CloseIcon,
@@ -6,13 +6,13 @@ import {
 } from "react-bootstrap-icons";
 
 export default function LocationDropDown({
-  options,
+  locData,
   onChange,
-  textPlaceHolder,
-  selectedLocation="",
+  placeholder,
+  selectedId,
 }) {
   const [inputValue, setInputValue] = useState("");
-  const [selectedItem, setSelectedItem] = useState(selectedLocation);
+  const [selectedItem, setSelectedItem] = useState(null);
   const [open, setOpen] = useState(false);
   const inputref = useRef();
   const clearText = () => {
@@ -21,39 +21,52 @@ export default function LocationDropDown({
     inputref.current.focus();
   };
 
+  useEffect(() => {
+    const item = locData.find((itm) => itm.id === selectedId);
+    if (item) setSelectedItem(item);
+  }, [locData, selectedId]);
+
   const onInputChange = (e) => {
     setInputValue(e.target.value);
   };
   const onItemSelected = (option) => {
-    onChange !== undefined && onChange(option.key);
+    onChange !== undefined && onChange(option);
     onChange !== undefined && setInputValue(option.name);
-    setSelectedItem(option.name);
+    setSelectedItem(option);
     setOpen(false);
   };
   const onInputClick = () => {
     setOpen((prevValue) => !prevValue);
   };
+
   const clearSelection = () => {
-    setSelectedItem("");
+    onChange !== undefined &&
+      onChange({
+        id: 0,
+        code: "",
+        type: "state",
+        name: "",
+      });
+    setSelectedItem(null);
     setInputValue("");
   };
   return (
     <div>
-      {selectedItem === "" && (
+      {(selectedItem === null || selectedItem.id === 0) && (
         <div>
           {inputValue && <CloseIcon className={s.close} onClick={clearText} />}
           {!inputValue && <SearchIcon className={s.search} />}
           <input
             ref={inputref}
             type="text"
-            placeholder={textPlaceHolder}
+            placeholder={placeholder}
             className={s.searchInput}
             value={inputValue ?? ""}
             onChange={onInputChange}
             onClick={onInputClick}
           />
           <div className={`${s.options} ${open ? s.optionVisibility : ""}`}>
-            {options
+            {locData
               .filter((item) => {
                 const searchItem = inputValue?.toLowerCase();
                 const v = item.name?.toLowerCase();
@@ -62,8 +75,8 @@ export default function LocationDropDown({
               })
               .map((opt) => (
                 <div
-                  id={opt.code}
-                  key={opt.code}
+                  id={opt.id}
+                  key={opt.id}
                   onClick={() => onItemSelected(opt)}
                   className={s.optionItems}
                 >
@@ -73,10 +86,12 @@ export default function LocationDropDown({
           </div>
         </div>
       )}
-      {selectedItem !== "" && (
+      {selectedItem && selectedItem.name !== "" && (
         <div className={s.selectedContainer}>
-          Selected: {selectedItem}
-          <span className={s.selectClose} onClick={clearSelection}>X</span>
+          Selected: {selectedItem.name}
+          <span className={s.selectClose} onClick={clearSelection}>
+            X
+          </span>
         </div>
       )}
     </div>

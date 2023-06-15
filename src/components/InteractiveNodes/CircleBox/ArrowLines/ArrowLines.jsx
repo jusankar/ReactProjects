@@ -46,7 +46,6 @@ export default function ArrowLines({ start, end }) {
       } ${(sY + eY) / 2} Q ${sX + (eX - sX) / 2} ${eY} ${eX - sR},${eY}`;
     }
   };
-
   return (
     <g>
       <defs>
@@ -70,7 +69,7 @@ export default function ArrowLines({ start, end }) {
           stroke="white"
           strokeWidth="1.5"
           fill="none"
-          marker-end="url(#arrowMarker)"
+          markerEnd="url(#arrowMarker)"
           style={{
             animation: `${s.pathAnimation} 2s forwards`,
           }}

@@ -35,7 +35,7 @@ export default function ColumnDropDown({
   };
 
   const onItemSelected = (option) => {
-    onChange !== undefined && onChange(option.key);
+    onChange !== undefined && onChange(option);
     onChange !== undefined && setInputValue(option.title);
     setOpen(false);
   };
@@ -61,14 +61,17 @@ export default function ColumnDropDown({
         </div>
       </div>
       <div>
-        {columnData.map((column, columnIndex) => (
+        {columnData && columnData.map((column, columnIndex) => (
           <div
             className={`${s.options} ${open ? s.optionVisibility : ""}`}
             key={`column-${columnIndex}`}
           >
             <div className={s.optionContainer}>
               {Object.values(column).map((columnItems) => (
-                <div className={s.column} key={`column-${columnIndex}`}>
+                <div
+                  className={s.column}
+                  key={`column-${columnIndex}-${columnItems[0].id}`}
+                >
                   {columnItems.map((opt) => (
                     <div
                       key={opt.id}

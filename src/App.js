@@ -28,11 +28,27 @@ import VRank from "./components/VRank/VRank";
 import HRank from "./components/HRank/HRank";
 import LRank from "./components/LRank/LRank";
 import Square from "./components/Square/Square";
+import Legend from "./components/Legend/Legend";
 
 function App() {
   const [stateJobCount, setStateJobCount] = useState([]);
   const [msaData, setMSAData] = useState([]);
   const [locations, setLocations] = useState([]);
+  const [staff, setStaff] = useState([]);
+  const [management, setManagement] = useState([]);
+  const [executive, setExecutive] = useState([]);
+
+  useEffect(() => {
+    async function getChartList() {
+      const staffList = await DataAPI.getNodeData("Staff");
+      setStaff(staffList);
+      const managementList = await DataAPI.getNodeData("Management");
+      setManagement(managementList);
+      const executiveList = await DataAPI.getNodeData("Executive");
+      setExecutive(executiveList);
+    }
+    getChartList();
+  }, []);
 
   useEffect(() => {
     async function fetchData() {
@@ -162,18 +178,19 @@ function App() {
   //   { key: 4, value: "Past 12 months" },
   // ];
   const [selectedOption, setSelectedOption] = useState(1);
-
   const salaryDistribution = {
     title: "Salary Distribution",
     salary: "86,419",
     subTitle: "Average base salary",
   };
+
   // Data for Employer Chart
   const employerJobCount = [
     { id: 1, employer: "Amazon", count: 1723 },
     { id: 2, employer: "Harvest Builders", count: 1047 },
     { id: 3, employer: "Royal Bank of Canada", count: 753 },
   ];
+
   //Data for Experience Chart
   const experiencePercentage = [
     { id: 1, label: "9+ years", percentage: 8 },
@@ -181,6 +198,7 @@ function App() {
     { id: 3, label: "3 to 5 years", percentage: 50 },
     { id: 4, label: "0 to 2 years", percentage: 30 },
   ];
+
   //Data for Bullet list
   const list = [
     { id: 1, value: "Javascript" },
@@ -208,8 +226,10 @@ function App() {
     { id: 23, value: "Javascript" },
     { id: 24, value: "Javascript" },
   ];
+
   //Data for Node chart
   //available in nodeChart
+
   //Data for Bubble chart
   const bubbleChartData = [
     { id: 1, count: 3000, title: "Accountant" },
@@ -233,7 +253,7 @@ function App() {
     { id: 19, count: 1225, title: "Developer" },
     { id: 20, count: 842, title: "Team Leader" },
   ];
-
+  // Data for Column dropdown
   const columnData = [
     {
       column1: [
@@ -271,6 +291,8 @@ function App() {
     },
   ];
   const [selectedId, setSelectedId] = useState(26);
+
+  // Data for InformationBox
   const title = "Supply/demand ratio";
 
   //Donut test data
@@ -278,48 +300,49 @@ function App() {
     {
       ID: 1,
       Description: "Sub-BA Degree",
-      Percentage: 13,
+      Percentage: 50,
     },
     {
       ID: 2,
       Description: "BA's Degree",
-      Percentage: 84,
+      Percentage: 30,
     },
     {
       ID: 3,
       Description: "Post-grad Degree",
-      Percentage: 3,
+      Percentage: 20,
     },
   ];
   const DonutColors = ["#faa42a", "#cfe0f2", "#3fb7cf"];
+
   // Data for Square Box component
   const squareData = [ 
-    { id: 1, title: "Chief Financial Officer", salary: 135.5 },
-    { id: 2, title: "Vice President, Finance/FP&A", salary: 140 },
-    { id: 3, title: "Director, Finance/FP&A", salary: 90.6 },
-    { id: 4, title: "Manager, Finance/FP&A", salary: 93.6 },
-    { id: 5, title: "Senior Financial/FP&A Analyst", salary: 75.2 },
-    { id: 6, title: "Financial/FP&A Analyst", salary: 70.5 },
-    { id: 7, title: "Treasurer", salary: 50.3 },
-    { id: 8, title: "Director, Treasury", salary: 90 },
-    { id: 9, title: "Director, Risk Management", salary: 90.1 },
-    { id: 10, title: "Manager, Treasury", salary: 80.0 },
-    { id: 11, title: "Treasury Analyst", salary: 79.0 },
-    { id: 12, title: "Controller", salary: 60 },
-    { id: 13, title: "Director, Accounting", salary: 89.5 },
-    { id: 14, title: "Manager, Accounting", salary: 87.2 },
-    { id: 15, title: "Accountant", salary: 45.0 },
-    { id: 16, title: "Accounting Clerk", salary: 36.0 },
-    { id: 17, title: "Vice President, Audit", salary: 130 },
-    { id: 18, title: "Director, Audit", salary: 120 },
-    { id: 19, title: "Manager, Audit", salary: 100 },
-    { id: 20, title: "Auditor", salary: 95 },
-    { id: 21, title: "Vice President, Tax", salary: 141 },
-    { id: 22, title: "Director, Tax", salary: 132 },
-    { id: 23, title: "Manager, Tax", salary: 130 },
-    { id: 24, title: "Tax Accountant", salary: 101 },
-    { id: 25, title: "Tax Analyst", salary: 99.9 },
-    { id: 26, title: "Finance Sector Overall", salary: 125.0 },
+    { Occ_Id: 1, Occ_Name: "Chief Financial Officer", salary: 135.5 },
+    { Occ_Id: 2, Occ_Name: "Vice PresOcc_Ident, Finance/FP&A", salary: 140 },
+    { Occ_Id: 3, Occ_Name: "Director, Finance/FP&A", salary: 90.6 },
+    { Occ_Id: 4, Occ_Name: "Manager, Finance/FP&A", salary: 93.6 },
+    { Occ_Id: 5, Occ_Name: "Senior Financial/FP&A Analyst", salary: 75.2 },
+    { Occ_Id: 6, Occ_Name: "Financial/FP&A Analyst", salary: 70.5 },
+    { Occ_Id: 7, Occ_Name: "Treasurer", salary: 50.3 },
+    { Occ_Id: 8, Occ_Name: "Director, Treasury", salary: 90 },
+    { Occ_Id: 9, Occ_Name: "Director, Risk Management", salary: 90.1 },
+    { Occ_Id: 10, Occ_Name: "Manager, Treasury", salary: 80.0 },
+    { Occ_Id: 11, Occ_Name: "Treasury Analyst", salary: 79.0 },
+    { Occ_Id: 12, Occ_Name: "Controller", salary: 60 },
+    { Occ_Id: 13, Occ_Name: "Director, Accounting", salary: 89.5 },
+    { Occ_Id: 14, Occ_Name: "Manager, Accounting", salary: 87.2 },
+    { Occ_Id: 15, Occ_Name: "Accountant", salary: 45.0 },
+    { Occ_Id: 16, Occ_Name: "Accounting Clerk", salary: 36.0 },
+    { Occ_Id: 17, Occ_Name: "Vice PresOcc_Ident, Audit", salary: 130 },
+    { Occ_Id: 18, Occ_Name: "Director, Audit", salary: 120 },
+    { Occ_Id: 19, Occ_Name: "Manager, Audit", salary: 100 },
+    { Occ_Id: 20, Occ_Name: "Auditor", salary: 95 },
+    { Occ_Id: 21, Occ_Name: "Vice PresOcc_Ident, Tax", salary: 141 },
+    { Occ_Id: 22, Occ_Name: "Director, Tax", salary: 132 },
+    { Occ_Id: 23, Occ_Name: "Manager, Tax", salary: 130 },
+    { Occ_Id: 24, Occ_Name: "Tax Accountant", salary: 101 },
+    { Occ_Id: 25, Occ_Name: "Tax Analyst", salary: 99.9 },
+    { Occ_Id: 26, Occ_Name: "Finance Sector Overall", salary: 125.0 },
 ];
   return (
     <div>
@@ -335,17 +358,18 @@ function App() {
       {/* 10. <NodeChart></NodeChart> */}
       {/* 11. <AutoSelect textPlaceHolder={"e.g. Marketing Specialist..."} buttonText={"View popular skills"} options={options} onChange={(item) => setSelectedOption(item)} selectedKey={selectedOption} /> */}
       {/* 12. <BubbleChart valType={"Job Postings"} data={bubbleChartData} startColor={"rgb(181, 228, 237)"} endColor={"rgb(29, 93, 106)"}/> */}
-      {/* 13. <USMapChart valType={"Job Postings"} locType="msa" mapData={msaData} startColor={"rgb(181, 228, 237)"} endColor={"rgb(29, 93, 106)"}  /> */}
-      {/* 14. <InteractiveNodes></InteractiveNodes> */}
-      {/* 15. <LocationDropDown options={locations} onChange={(item) => setSelectedOption(item)} selectedLocation={"Ohio"} textPlaceHolder={"Search Country or Metro Area"}></LocationDropDown> */}
+      {/* 13. <USMapChart locSelected={27} valType={"Job Postings"} onClick={(id) => {console.log(id);}} locType="msa" mapSize={0.8} mapData={msaData} startColor={"rgb(181, 228, 237)"} endColor={"rgb(29, 93, 106)"}  /> */}
+      14. <InteractiveNodes staff={staff} management={management} executive={executive}></InteractiveNodes>
+      {/* 15. <LocationDropDown locData={locations} onChange={(item) => setSelectedOption(item)} selectedId={0} placeholder={"Search Country or Metro Area"}></LocationDropDown> */}
       {/* 16. <ColumnDropDown  columnData={columnData} onChange={(item) => setSelectedId(item)} selectedId={selectedId} placeholder={"type to search"}></ColumnDropDown> */}
-      {/* 17. <InformationBox title={title}></InformationBox> */}
-      18. <GaugeChart startValue={500} endValue={2000} pointedValue={1800} duration={1}></GaugeChart>
+      {/* 17. <InformationBox title={title} ></InformationBox> */}
+      {/* 18. <GaugeChart startValue={500} endValue={2000} pointedValue={750} duration={1}></GaugeChart> */}
       {/* 19. <Donut size={100} color={DonutColors} inputData={DonutTestData}></Donut> */}
-      {/* 20. <VRank selectedCode={"NM"} data={stateJobCount}/> */}
-      {/* 21. <HRank selectedCode={"NM"} data={stateJobCount}/> */}
-      {/* 22. <LRank selectedCode={"NM"} data={stateJobCount}/> */}
+      {/* 20. <VRank selectedId={1} data={stateJobCount}/> */}
+      {/* 21. <HRank selectedId={1} data={stateJobCount}/> */}
+      {/* 22. <LRank selectedId={1} data={stateJobCount}/> */}
       {/* 23. <Square selectedCode={4} data={squareData} /> */}
+      {/* 24. <Legend title={"Salary"} minValue={1000} maxValue={20000} numIntervals={4} startColor={"rgb(181, 228, 237)"} endColor={"rgb(29, 93, 106)"}   /> */}
       {/* <XArrowLine></XArrowLine> */}
       {/* <Sector size={200} inputData={DonutTestData}></Sector> */}
     </div>

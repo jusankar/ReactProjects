@@ -1,34 +1,18 @@
-import { useEffect, useState } from "react";
+import React from "react";
 import s from "./style.module.css";
-import { DataAPI } from "../../api/data";
 import CircleBox from "./CircleBox/CircleBox";
 
-export default function InteractiveNodes() {
-  const [staffs, setStaffs] = useState([]);
-  const [management, setManagement] = useState([]);
-  const [executive, setExecutive] = useState([]);
-
-  async function getChartList() {
-    const staffList = await DataAPI.getNodeData("Staff");
-    setStaffs(staffList);
-    const managementList = await DataAPI.getNodeData("Management");
-    setManagement(managementList);
-    const executiveList = await DataAPI.getNodeData("Executive");
-    setExecutive(executiveList);
-  }
-  useEffect(() => {
-    getChartList();
-  }, []);
+export default function InteractiveNodes({ staff, management, executive }) {
   return (
     <div className={s.container}>
-      <svg viewBox="0 0 800 650" width="800" height="650">
-        <rect x="0" y="0" width="800" height="650" fill="#373737" />
-        {staffs &&
-          staffs.map((itm, index) => {
+      <svg viewBox="0 0 800 650" className={s.viewBox}>
+        {staff &&
+          staff.map((itm, index) => {
             const y = 100 + index * 100;
             return (
-              <>
+              <g key={index}>
                 <text
+                  key={"ST" + itm.id}
                   x="150"
                   y="20"
                   textAnchor="middle"
@@ -39,21 +23,22 @@ export default function InteractiveNodes() {
                   Staff
                 </text>
                 <CircleBox
-                  key={itm.id}
+                  key={"SC" + itm.id}
                   x={150}
                   y={y}
                   item={itm}
                   colNumber={1}
                 ></CircleBox>
-              </>
+              </g>
             );
           })}
         {management &&
           management.map((itm, index) => {
             const y = 100 + index * 100;
             return (
-              <>
+              <g key={index}>
                 <text
+                  key={"MT" + itm.id}
                   x="400"
                   y="20"
                   textAnchor="middle"
@@ -64,21 +49,22 @@ export default function InteractiveNodes() {
                   Management
                 </text>
                 <CircleBox
-                  key={itm.id}
+                  key={"MC" + itm.id}
                   x={400}
                   y={y}
                   item={itm}
                   colNumber={2}
                 ></CircleBox>
-              </>
+              </g>
             );
           })}
         {executive &&
           executive.map((itm, index) => {
             const y = 70 + index * 100;
             return (
-              <>
-              <text
+              <g key={index}>
+                <text
+                  key={"ET" + itm.id}
                   x="650"
                   y="20"
                   textAnchor="middle"
@@ -88,14 +74,14 @@ export default function InteractiveNodes() {
                 >
                   Executive
                 </text>
-              <CircleBox
-                key={itm.id}
-                x={650}
-                y={y}
-                item={itm}
-                colNumber={3}
-              ></CircleBox>
-              </>
+                <CircleBox
+                  key={"EC" + itm.id}
+                  x={650}
+                  y={y}
+                  item={itm}
+                  colNumber={3}
+                ></CircleBox>
+              </g>
             );
           })}
       </svg>

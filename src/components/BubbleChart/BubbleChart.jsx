@@ -4,8 +4,8 @@ import * as d3 from "d3";
 
 export default function BubbleChart({valType, data, startColor, endColor }) {
   const [hoveredCircle, setHoveredCircle] = useState(null);
-  const svgWidth = 700; // or whatever the width of your SVG container is
-  const svgHeight = 700; // or whatever the height of your SVG container is
+  const svgWidth = 500; // or whatever the width of your SVG container is
+  const svgHeight = 500; // or whatever the height of your SVG container is
 
   const maxCount = Math.max(...data.map((item) => item.count));
 

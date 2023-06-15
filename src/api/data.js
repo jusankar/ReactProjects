@@ -1,4 +1,4 @@
-import { MSA, STATE,COUNTY } from "./locData";
+import { MSA, STATE, COUNTY } from "./locData";
 import { TEST_STATE_DATA, TEST_MSA_DATA } from "./mapData";
 import { TEST_NODE_DATA } from "./nodeData";
 import { TEST_SKILL_DATA } from "./testdata";
@@ -10,22 +10,22 @@ export class DataAPI {
     locTypes.forEach((loc) => {
       switch (loc) {
         case "state":
-          const stateData = STATE.reduce((acc, { STATEFP, STUSPS, NAME }) => {
-            acc.push({ id: STATEFP, code: STUSPS, name: NAME });
+          const stateData = STATE.reduce((acc, { Id, Code, Name }) => {
+            acc.push({ id: Id, code: Code, type: "state", name: Name });
             return acc;
           }, []);
           data.push(...stateData);
           break;
         case "msa":
-          const msaData = MSA.reduce((acc, { CSAFP, GEOID, NAME }) => {
-            acc.push({ id: CSAFP, code: GEOID, name: NAME });
+          const msaData = MSA.reduce((acc, { Id, Code, Name }) => {
+            acc.push({ id: Id, code: Code, type: "msa", name: Name });
             return acc;
           }, []);
           data.push(...msaData);
           break;
         case "county":
-          const countyData = COUNTY.reduce((acc, { COUNTYFP, GEOID, NAME }) => {
-            acc.push({ id: COUNTYFP, code: GEOID, name: NAME });
+          const countyData = COUNTY.reduce((acc, { Id, Code, Name }) => {
+            acc.push({ id: Id, code: Code, type: "county", name: Name });
             return acc;
           }, []);
           data.push(...countyData);
@@ -83,6 +83,10 @@ export class DataAPI {
           id: id,
           value: type === "Executive" ? node.target : node.source_function,
           tier: type,
+          dataList: this.getArrowData(
+            type,
+            type === "Executive" ? node.target : node.source_function
+          ),
         };
       }
       return acc;
@@ -90,7 +94,7 @@ export class DataAPI {
     return Object.values(uniqueNodes);
   }
 
-  static async getArrowData(tier, value) {
+  static getArrowData(tier, value){
     let eFromData = [];
     let eToData = [];
     let fromData = [];
@@ -178,5 +182,5 @@ export class DataAPI {
       toData = Object.values(dataToNodes);
     }
     return [...eFromData, ...eToData, ...fromData, ...toData];
-  }
+  };
 }

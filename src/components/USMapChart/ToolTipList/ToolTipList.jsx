@@ -5,7 +5,7 @@ export default function ToolTipList({ feature }) {
     <div className={s.toolTipCount}>
       {feature.properties.ToolTip &&
         feature.properties.ToolTip.map((tip) => (
-          <div key={feature.properties.AFFGEOID+tip.name}>
+          <div key={feature.properties.GEOID+tip.name}>
             <div>{tip.name}: </div>
             <div>{tip.value}</div>
           </div>

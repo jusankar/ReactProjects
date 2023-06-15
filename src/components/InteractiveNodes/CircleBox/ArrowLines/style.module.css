@@ -1,24 +1,19 @@
 @keyframes pathAnimation {
-    0% {
-      stroke-dashoffset: 1000;
-    }
-    100% {
-      stroke-dashoffset: 0;
-    }
-  }
-  
-  .path {
-    stroke-dasharray: 1000;
+  0% {
     stroke-dashoffset: 1000;
-    animation: pathAnimation 2s ease-in-out forwards;
   }
-  
-  .path:nth-child(1) {
-    animation-delay: 0.5s;
+  100% {
+    stroke-dashoffset: 0;
   }
-  
-  .path:nth-child(2) {
-    animation-delay: 0.8s;
-  }
-  
-  
+}
+.path {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: pathAnimation 2s ease-in-out forwards;
+}
+.path:nth-child(1) {
+  animation-delay: 0.5s;
+}
+.path:nth-child(2) {
+  animation-delay: 0.8s;
+}

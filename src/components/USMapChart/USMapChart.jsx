@@ -6,27 +6,29 @@ import usMSA from "./path/us-msa-map.json";
 import usCounty from "./path/us-county-map.json";
 import ToolTipList from "./ToolTipList/ToolTipList";
 import { ZoomOut } from "react-bootstrap-icons";
-import Legend from "../Legend/Legend";
 
 export default function USMapChart({
   locType,
-  valType,
   mapData,
   startColor,
   endColor,
+  locSelected,
+  onClick,
+  mapSize,
 }) {
   const [hoveredPath, setHoveredPath] = useState(null);
+  const [clickedPath, setClickedPath] = useState(null);
   const [geoData, setGeoData] = useState({});
   const [geoBG, setGeoBG] = useState({});
-  const [mapWidth, setMapWidth] = useState(800);
-  const [mapHeight, setMapHeight] = useState(550);
+  const [mapWidth, setMapWidth] = useState(0);
+  const [mapHeight, setMapHeight] = useState(0);
   const [mapTranslateX, setMapTranslateX] = useState(0);
   const [mapTranslateY, setMapTranslateY] = useState(0);
   const [maxValue, setMaxValue] = useState(0);
-  const [minValue, setMinValue] = useState(0);
-  const [mapScale, setMapScale] = useState(1);
-
+  const [mapScale, setMapScale] = useState(mapSize);
   useEffect(() => {
+    setMapWidth(700);
+    setMapHeight(400);
     let geoData;
     switch (locType) {
       case "state":
@@ -62,16 +64,18 @@ export default function USMapChart({
           feature.properties.ToolTip = matchGeo.ToolTip;
         }
       });
+
     setGeoData(geoData);
     const values = geoData.features
       .map((feature) => feature.properties.Value)
       .filter((value) => value !== undefined && value !== null && value !== 0);
-
-    const min = Math.min(...values);
     const max = Math.max(...values);
-    setMinValue(min);
     setMaxValue(max);
   }, [mapData, locType, startColor, endColor]);
+
+  useEffect(() => {
+    setClickedPath(locSelected);
+  }, [locSelected]);
 
   const getFillColor = (count) => {
     if (count && count !== 0) {
@@ -101,30 +105,41 @@ export default function USMapChart({
     }
   };
 
-  const clickedMSA = (position, box) => {
-    const scale =
-      2 + Math.min(50 / (box[1][0] - box[0][0]), 50 / (box[1][1] - box[0][1]));
-    const clickedX = -position[0] * scale + mapWidth / 2;
-    const clickedY = -position[1] * scale + mapHeight / 2;
-    setMapTranslateX(clickedX);
-    setMapTranslateY(clickedY);
-    setMapScale(scale);
+  const handleMapClick = (pathId, position, box) => {
+    if (clickedPath === pathId) {
+      setClickedPath(null);
+    } else {
+      setClickedPath(pathId);
+    }
+    onClick !== undefined && onClick(pathId);
+    if (locType === "msa") {
+      const scale =
+        2 +
+        Math.min(50 / (box[1][0] - box[0][0]), 50 / (box[1][1] - box[0][1]));
+      const clickedX = -position[0] * scale + mapWidth / 2;
+      const clickedY = -position[1] * scale + mapHeight / 2;
+      setMapTranslateX(clickedX-90);
+      setMapTranslateY(clickedY-35);
+      setMapScale(scale);
+    }
   };
 
-  const handleClick = () => {
+  const handleZoomClick = () => {
     setMapTranslateX(0);
     setMapTranslateY(0);
-    setMapScale(1);
+    setMapScale(mapSize);
   };
+
+  const viewBox = `-90 -35 ${mapWidth} ${mapHeight}`;
+
   return (
     <div
-      className={s.conatiner}
-      style={{ height: `${mapHeight}px`, width: `${mapWidth}px` }}
+      className={s.container}
     >
       <svg
         width={mapWidth}
         height={mapHeight}
-        viewBox={`0 0 ${mapWidth} ${mapHeight}`}
+        viewBox={viewBox}
         className={s.svgViewBox}
       >
         {/* State background for the MSA map */}
@@ -134,11 +149,11 @@ export default function USMapChart({
             return (
               <g
                 className={s.mapViewBox}
-                key={locType + feature.properties.AFFGEOID}
+                key={locType + feature.properties.GEOID}
                 transform={`translate(${mapTranslateX},${mapTranslateY}) scale(${mapScale})`}
               >
                 <path
-                  key={locType + feature.properties.AFFGEOID}
+                  key={locType + feature.properties.GEOID}
                   d={path(feature)}
                   className={s.stateBGPath}
                 />
@@ -150,26 +165,27 @@ export default function USMapChart({
           geoData.features.map((feature) => {
             const centroid = path.centroid(feature);
             const pathBounds = path.bounds(feature);
+            const isClickedPath =
+              clickedPath && feature.properties.GEOID === clickedPath;
             return (
               <g
-                id={feature.properties.AFFGEOID}
+                id={feature.properties.GEOID}
                 className={s.mapViewBox}
-                key={locType + feature.properties.AFFGEOID}
-                onMouseEnter={() =>
-                  handleMouseEnter(feature.properties.AFFGEOID)
+                key={locType + feature.properties.GEOID}
+                onMouseEnter={() => handleMouseEnter(feature.properties.GEOID)}
+                onMouseLeave={() => handleMouseLeave(feature.properties.GEOID)}
+                onClick={() =>
+                  handleMapClick(feature.properties.GEOID, centroid, pathBounds)
                 }
-                onMouseLeave={() =>
-                  handleMouseLeave(feature.properties.AFFGEOID)
-                }
-                onClick={() => clickedMSA(centroid, pathBounds)}
                 transform={`translate(${mapTranslateX},${mapTranslateY}) scale(${mapScale})`}
               >
                 <path
-                  key={feature.properties.AFFGEOID}
+                  key={feature.properties.GEOID}
                   d={path(feature)}
                   fill={getFillColor(feature.properties.Value)}
-                  strokeWidth={0.5}
-                  className={s.statePath}
+                  className={`${s.statePath} ${
+                    isClickedPath ? s.statePathSelected : ""
+                  }`}
                 />
                 {/* {centroid[0] && centroid[1] && (
                   <text x={centroid[0]} y={centroid[1]} textAnchor="middle">
@@ -184,13 +200,11 @@ export default function USMapChart({
       {geoData &&
         geoData.features &&
         geoData.features.map((feature) => {
-          const pathElement = document.getElementById(
-            feature.properties.AFFGEOID
-          );
+          const pathElement = document.getElementById(feature.properties.GEOID);
           const pos = pathElement && pathElement.getBoundingClientRect();
           return (
-            <div key={feature.properties.AFFGEOID}>
-              {hoveredPath === feature.properties.AFFGEOID && (
+            <div key={feature.properties.GEOID}>
+              {hoveredPath === feature.properties.GEOID && (
                 <div
                   style={{
                     top: pos.top + pos.height / 2,
@@ -209,19 +223,11 @@ export default function USMapChart({
             </div>
           );
         })}
-      {mapScale !== 1 && (
-        <button className={s.zoomOut} onClick={handleClick}>
+      {locType === "msa" && mapScale !== mapSize && (
+        <button className={s.zoomOut} onClick={handleZoomClick}>
           {"Zoom out "} <ZoomOut size={16} />
         </button>
       )}
-      <Legend
-        title={valType}
-        minValue={minValue}
-        maxValue={maxValue}
-        numIntervals={4}
-        startColor={startColor}
-        endColor={endColor}
-      ></Legend>
     </div>
   );
 }

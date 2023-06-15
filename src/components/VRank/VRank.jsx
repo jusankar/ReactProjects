@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import s from "./style.module.css";
 
-export default function VRank({ selectedCode, data }) {
-  const [toolTip, setToolTip] = useState([]);
+export default function VRank({ selectedId, data }) {
+  const [toolTip, setToolTip] = useState("");
   const [subsetData, setSubsetData] = useState([]);
   const [rank, setRank] = useState(0);
   const [count, setCount] = useState(0);
@@ -10,24 +10,39 @@ export default function VRank({ selectedCode, data }) {
   const [total, setTotal] = useState(0);
 
   useEffect(() => {
-    const selectedValue = data.find(
-      (item) => item.StateCode === selectedCode
-    )?.Value;
+    const selectedValue = data.find((item) => item.Id === selectedId);
     setValue(selectedValue);
 
     if (selectedValue !== undefined) {
       // Sort the data based on the value in ascending order
       const sortedData = data.slice().sort((a, b) => b.Value - a.Value);
-
       // Find the index of the selected code's value in the sorted data
       const selectedIndex = sortedData.findIndex(
-        (item) => item.Value === selectedValue
+        (item) => item === selectedValue
       );
 
       if (selectedIndex !== -1) {
-        const startIndex = Math.max(0, selectedIndex - 5);
-        const endIndex = Math.min(sortedData.length , selectedIndex + 4);
-        const subsetData = sortedData.slice(startIndex, endIndex + 1);
+        let startIndex = Math.max(0, selectedIndex - 4);
+        let endIndex = Math.min(sortedData.length - 1, selectedIndex + 4);
+        let subsetData;
+
+        if (endIndex - startIndex < 9) {
+          const diff = 9 - (endIndex - startIndex);
+          if (startIndex === 0) {
+            endIndex = Math.min(sortedData.length - 1, endIndex + diff);
+          } else if (endIndex === sortedData.length - 1) {
+            startIndex = Math.max(0, startIndex - diff);
+          } else {
+            const halfDiff = Math.floor(diff / 2);
+            startIndex = Math.max(0, startIndex - halfDiff);
+            endIndex = Math.min(
+              sortedData.length - 1,
+              endIndex + (diff - halfDiff)
+            );
+          }
+        }
+        subsetData = sortedData.slice(startIndex, endIndex + 1);
+
         const totalCount = sortedData.length;
         const totalSum = subsetData.reduce((sum, item) => sum + item.Value, 0);
         setSubsetData(subsetData);
@@ -36,7 +51,7 @@ export default function VRank({ selectedCode, data }) {
         setTotal(totalSum);
       }
     }
-  }, [data, selectedCode]);
+  }, [data, selectedId]);
 
   const handleMouseEnter = (item) => {
     setToolTip(item);
@@ -49,24 +64,25 @@ export default function VRank({ selectedCode, data }) {
   return (
     <div className={s.mainContainer}>
       <div>
-        <h2>{value && value.toLocaleString()}</h2>
+        <h2>{value?.Value && value?.Value.toLocaleString()}</h2>
       </div>
       {subsetData.map((item) => (
         <div
-          key={item.StateCode}
+          key={item.Id}
           className={`${s.bar} ${
-            item.Value === value ? s.selectedBar : s.verticalBar
+            item === value ? s.selectedBar : s.verticalBar
           }`}
-          style={{ width: `${((item.Value * 300) / total)+20}px` }}
+          style={{ width: `${(item.Value * 300) / total + 20}px` }}
           onMouseEnter={() => handleMouseEnter(item)}
           onMouseLeave={handleMouseLeave}
         >
-          {toolTip && toolTip.StateCode === item.StateCode && (
-            <div className={s.toolTip}
-            style={{ left: `${((item.Value * 300) / total)+100}px` }}
+          {toolTip && toolTip.Id === item.Id && (
+            <div
+              className={s.toolTip}
+              style={{ left: `${(item.Value * 300) / total + 100}px` }}
             >
-              <div>State Code: {toolTip.StateCode} </div>
-              <div>Value: {toolTip.Value} </div>
+              <div>{item.Name} </div>
+              <div>{item.Value} </div>
             </div>
           )}
         </div>

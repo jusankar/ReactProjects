@@ -1,7 +1,9 @@
-.mainContainer{
-    display: inline-block;
-    background-color: rgb(12, 31, 50);
-    padding: 10px;
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(12, 31, 50);
+  padding: 10px;
+  align-items:start;
 }
 .container {
   position: relative;
@@ -18,13 +20,11 @@
   display: flex;
   flex-direction: row;
   gap: 10px;
-  align-items: center;
   margin-left: 10px;
   color: white;
-  text-align: left;
 }
 .legendConatiner:nth-child(2) {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 .bullet {
   height: 15px;
@@ -32,9 +32,8 @@
   border-radius: 50%;
 }
 .percentage {
-    width: 40px; /* Adjust the width as needed */
-  }
+  width: 40px; /* Adjust the width as needed */
+}
 .description {
-    margin-left: 5px;
-  }
-  
+  margin-left: 5px;
+}

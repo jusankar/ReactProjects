@@ -1,9 +1,7 @@
 .mainContainer {
-  display: inline-block;
   background-color: rgb(12, 31, 50);
-  padding: 20px;
+  padding: 0px 20px 20px 20px;
   color: white;
-  width: 300px;
 }
 
 .container {

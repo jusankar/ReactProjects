@@ -1,7 +1,5 @@
 .mainConatiner, .container {
   background-color: rgba(12, 31, 50, 1);
-  width: 700px;
-  height: 700px;
 }
 
 .circle:hover {

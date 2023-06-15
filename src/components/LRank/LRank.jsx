@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import s from "./style.module.css";
 
-export default function LRank({ selectedCode, data }) {
+export default function LRank({ selectedId, data }) {
   const [selectedRange, setSelectedRange] = useState(0);
   useEffect(() => {
     // Find the selected value from the selected Code
     const selectedValue = data.find(
-      (item) => item.StateCode === selectedCode
+      (item) => item.Id === selectedId
     )?.Value;
     // Find the maximum value
     const values = data.map((item) => item.Value);
@@ -27,7 +27,7 @@ export default function LRank({ selectedCode, data }) {
         break;
       }
     }
-  }, [data, selectedCode]);
+  }, [data, selectedId]);
 
   return (
     <div className={s.mainContainer}>

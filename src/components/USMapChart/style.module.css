@@ -1,4 +1,4 @@
-.conatiner {
+.container  {
   position: relative;
   background-color: #0C1F32;
 }
@@ -13,17 +13,20 @@
 .stateBGPath {
   stroke: white;
   fill: rgb(240, 239, 239);
-  stroke-width: 1px;
 }
 .statePath {
   z-index: 800;
   stroke: black;
+  stroke-width: 0.5px;
+}
+.statePathSelected{
+  stroke-width: 2px;
 }
 
 .statePath:hover {
-  stroke-width: 2;
+  stroke-width: 1;
   stroke: white;
-  stroke-dasharray: 5 5;
+  stroke-dasharray: 3 3;
 }
 
 .tooltip {

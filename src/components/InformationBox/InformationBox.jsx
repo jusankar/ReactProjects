@@ -14,20 +14,15 @@ export default function InformationBox({ title, detail }) {
     <div>
       <div className={s.title}>
         {title}
-        <Info
-          className={s.infoIcon}
-          onClick={handleClick}
-          onMouseLeave={handleMouseLeave}
-        />
+        {detail && (
+          <Info
+            className={s.infoIcon}
+            onClick={handleClick}
+            onMouseLeave={handleMouseLeave}
+          />
+        )}
       </div>
-      {showToolTip && (
-        <div className={s.toolTip}>
-          {detail}
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat
-          minus, architecto beatae placeat quas qui commodi aliquid ducimus odit
-          aperiam, ullam natus quo velit mollitia minima? Labore a modi illo.
-        </div>
-      )}
+      {detail && showToolTip && <div className={s.toolTip}>{detail}</div>}
     </div>
   );
 }

@@ -2,31 +2,35 @@ export const TEST_STATE_DATA = [
   {
     "Total Job Count": [
       {
-        StateCode: "AL",
-        Value: 3646,
+        Id: 1,
+        Name: "AL",
+        Value: 25000,
         ToolTip: [
           { name: "Total Job count", value: 3646 },
           { name: "Demand percentage", value: 54 },
         ],
       },
       {
-        StateCode: "AK",
-        Value: 8358,
+        Id: 2,
+        Name: "AK",
+        Value: 35050,
         ToolTip: [
           { name: "Total Job count", value: 8358 },
           { name: "Demand percentage", value: 26 },
         ],
       },
       {
-        StateCode: "AZ",
-        Value: 4838,
+        Id: 3,
+        Name: "AZ",
+        Value: 20,
         ToolTip: [
           { name: "Total Job count", value: 4838 },
           { name: "Demand percentage", value: 32 },
         ],
       },
       {
-        StateCode: "AR",
+        Id: 4,
+        Name: "AR",
         Value: 782,
         ToolTip: [
           { name: "Total Job count", value: 782 },
@@ -34,7 +38,8 @@ export const TEST_STATE_DATA = [
         ],
       },
       {
-        StateCode: "CA",
+        Id: 5,
+        Name: "CA",
         Value: 9855,
         ToolTip: [
           { name: "Total Job count", value: 9855 },
@@ -42,7 +47,8 @@ export const TEST_STATE_DATA = [
         ],
       },
       {
-        StateCode: "CO",
+        Id: 6,
+        Name: "CO",
         Value: 6134,
         ToolTip: [
           { name: "Total Job count", value: 6134 },
@@ -50,7 +56,8 @@ export const TEST_STATE_DATA = [
         ],
       },
       {
-        StateCode: "CT",
+        Id: 7,
+        Name: "CT",
         Value: 4495,
         ToolTip: [
           { name: "Total Job count", value: 4495 },
@@ -58,7 +65,8 @@ export const TEST_STATE_DATA = [
         ],
       },
       {
-        StateCode: "DE",
+        Id: 8,
+        Name: "DE",
         Value: 6979,
         ToolTip: [
           { name: "Total Job count", value: 6979 },
@@ -66,7 +74,8 @@ export const TEST_STATE_DATA = [
         ],
       },
       {
-        StateCode: "FL",
+        Id: 9,
+        Name: "FL",
         Value: 3634,
         ToolTip: [
           { name: "Total Job count", value: 3634 },
@@ -74,7 +83,8 @@ export const TEST_STATE_DATA = [
         ],
       },
       {
-        StateCode: "GA",
+        Id: 10,
+        Name: "GA",
         Value: 9338,
         ToolTip: [
           { name: "Total Job count", value: 9338 },
@@ -82,7 +92,8 @@ export const TEST_STATE_DATA = [
         ],
       },
       {
-        StateCode: "HI",
+        Id: 11,
+        Name: "HI",
         Value: 4565,
         ToolTip: [
           { name: "Total Job count", value: 4565 },
@@ -90,7 +101,8 @@ export const TEST_STATE_DATA = [
         ],
       },
       {
-        StateCode: "ID",
+        Id: 12,
+        Name: "ID",
         Value: 9481,
         ToolTip: [
           { name: "Total Job count", value: 9481 },
@@ -98,7 +110,8 @@ export const TEST_STATE_DATA = [
         ],
       },
       {
-        StateCode: "IL",
+        Id: 13,
+        Name: "IL",
         Value: 3828,
         ToolTip: [
           { name: "Total Job count", value: 3828 },
@@ -106,7 +119,8 @@ export const TEST_STATE_DATA = [
         ],
       },
       {
-        StateCode: "IN",
+        Id: 14,
+        Name: "IN",
         Value: 7231,
         ToolTip: [
           { name: "Total Job count", value: 7231 },
@@ -114,7 +128,8 @@ export const TEST_STATE_DATA = [
         ],
       },
       {
-        StateCode: "IA",
+        Id: 15,
+        Name: "IA",
         Value: 4564,
         ToolTip: [
           { name: "Total Job count", value: 4564 },
@@ -122,7 +137,8 @@ export const TEST_STATE_DATA = [
         ],
       },
       {
-        StateCode: "KS",
+        Id: 16,
+        Name: "KS",
         Value: 7878,
         ToolTip: [
           { name: "Total Job count", value: 7878 },
@@ -130,7 +146,8 @@ export const TEST_STATE_DATA = [
         ],
       },
       {
-        StateCode: "KY",
+        Id: 17,
+        Name: "KY",
         Value: 5517,
         ToolTip: [
           { name: "Total Job count", value: 5517 },
@@ -140,7 +157,8 @@ export const TEST_STATE_DATA = [
         ],
       },
       {
-        StateCode: "LA",
+        Id: 18,
+        Name: "LA",
         Value: 2423,
         ToolTip: [
           { name: "Total Job count", value: 2423 },
@@ -148,7 +166,8 @@ export const TEST_STATE_DATA = [
         ],
       },
       {
-        StateCode: "ME",
+        Id: 19,
+        Name: "ME",
         Value: 6683,
         ToolTip: [
           { name: "Total Job count", value: 6683 },
@@ -156,7 +175,8 @@ export const TEST_STATE_DATA = [
         ],
       },
       {
-        StateCode: "MD",
+        Id: 20,
+        Name: "MD",
         Value: 2336,
         ToolTip: [
           { name: "Total Job count", value: 2336 },
@@ -164,7 +184,8 @@ export const TEST_STATE_DATA = [
         ],
       },
       {
-        StateCode: "MA",
+        Id: 21,
+        Name: "MA",
         Value: 8680,
         ToolTip: [
           { name: "Total Job count", value: 8680 },
@@ -172,7 +193,8 @@ export const TEST_STATE_DATA = [
         ],
       },
       {
-        StateCode: "MI",
+        Id: 22,
+        Name: "MI",
         Value: 5832,
         ToolTip: [
           { name: "Total Job count", value: 5832 },
@@ -180,7 +202,7 @@ export const TEST_STATE_DATA = [
         ],
       },
       {
-        StateCode: "MN",
+        Name: "MN",
         Value: 286,
         ToolTip: [
           { name: "Total Job count", value: 286 },
@@ -188,7 +210,7 @@ export const TEST_STATE_DATA = [
         ],
       },
       {
-        StateCode: "MS",
+        Name: "MS",
         Value: 5573,
         ToolTip: [
           { name: "Total Job count", value: 5573 },
@@ -196,7 +218,7 @@ export const TEST_STATE_DATA = [
         ],
       },
       {
-        StateCode: "MO",
+        Name: "MO",
         Value: 9400,
         ToolTip: [
           { name: "Total Job count", value: 9400 },
@@ -204,7 +226,7 @@ export const TEST_STATE_DATA = [
         ],
       },
       {
-        StateCode: "MT",
+        Name: "MT",
         Value: 9124,
         ToolTip: [
           { name: "Total Job count", value: 9124 },
@@ -212,7 +234,7 @@ export const TEST_STATE_DATA = [
         ],
       },
       {
-        StateCode: "NE",
+        Name: "NE",
         Value: 5948,
         ToolTip: [
           { name: "Total Job count", value: 5948 },
@@ -220,7 +242,7 @@ export const TEST_STATE_DATA = [
         ],
       },
       {
-        StateCode: "NV",
+        Name: "NV",
         Value: 9149,
         ToolTip: [
           { name: "Total Job count", value: 9149 },
@@ -228,7 +250,7 @@ export const TEST_STATE_DATA = [
         ],
       },
       {
-        StateCode: "NH",
+        Name: "NH",
         Value: 6022,
         ToolTip: [
           { name: "Total Job count", value: 6022 },
@@ -236,7 +258,7 @@ export const TEST_STATE_DATA = [
         ],
       },
       {
-        StateCode: "NJ",
+        Name: "NJ",
         Value: 5420,
         ToolTip: [
           { name: "Total Job count", value: 5420 },
@@ -244,7 +266,7 @@ export const TEST_STATE_DATA = [
         ],
       },
       {
-        StateCode: "NM",
+        Name: "NM",
         Value: 7723,
         ToolTip: [
           { name: "Total Job count", value: 7723 },
@@ -252,7 +274,7 @@ export const TEST_STATE_DATA = [
         ],
       },
       {
-        StateCode: "NY",
+        Name: "NY",
         Value: 5050,
         ToolTip: [
           { name: "Total Job count", value: 5050 },
@@ -260,7 +282,7 @@ export const TEST_STATE_DATA = [
         ],
       },
       {
-        StateCode: "NC",
+        Name: "NC",
         Value: 1629,
         ToolTip: [
           { name: "Total Job count", value: 1629 },
@@ -268,7 +290,7 @@ export const TEST_STATE_DATA = [
         ],
       },
       {
-        StateCode: "ND",
+        Name: "ND",
         Value: 7566,
         ToolTip: [
           { name: "Total Job count", value: 7566 },
@@ -276,7 +298,7 @@ export const TEST_STATE_DATA = [
         ],
       },
       {
-        StateCode: "OH",
+        Name: "OH",
         Value: 9109,
         ToolTip: [
           { name: "Total Job count", value: 9109 },
@@ -284,7 +306,7 @@ export const TEST_STATE_DATA = [
         ],
       },
       {
-        StateCode: "OK",
+        Name: "OK",
         Value: 3173,
         ToolTip: [
           { name: "Total Job count", value: 3173 },
@@ -292,7 +314,7 @@ export const TEST_STATE_DATA = [
         ],
       },
       {
-        StateCode: "OR",
+        Name: "OR",
         Value: 6523,
         ToolTip: [
           { name: "Total Job count", value: 6523 },
@@ -300,7 +322,7 @@ export const TEST_STATE_DATA = [
         ],
       },
       {
-        StateCode: "PA",
+        Name: "PA",
         Value: 6156,
         ToolTip: [
           { name: "Total Job count", value: 6156 },
@@ -308,7 +330,7 @@ export const TEST_STATE_DATA = [
         ],
       },
       {
-        StateCode: "RI",
+        Name: "RI",
         Value: 5805,
         ToolTip: [
           { name: "Total Job count", value: 5805 },
@@ -316,7 +338,7 @@ export const TEST_STATE_DATA = [
         ],
       },
       {
-        StateCode: "SC",
+        Name: "SC",
         Value: 5360,
         ToolTip: [
           { name: "Total Job count", value: 5360 },
@@ -324,7 +346,7 @@ export const TEST_STATE_DATA = [
         ],
       },
       {
-        StateCode: "SD",
+        Name: "SD",
         Value: 9533,
         ToolTip: [
           { name: "Total Job count", value: 9533 },
@@ -332,7 +354,7 @@ export const TEST_STATE_DATA = [
         ],
       },
       {
-        StateCode: "TN",
+        Name: "TN",
         Value: 3436,
         ToolTip: [
           { name: "Total Job count", value: 3436 },
@@ -340,7 +362,7 @@ export const TEST_STATE_DATA = [
         ],
       },
       {
-        StateCode: "TX",
+        Name: "TX",
         Value: 5763,
         ToolTip: [
           { name: "Total Job count", value: 5763 },
@@ -348,7 +370,7 @@ export const TEST_STATE_DATA = [
         ],
       },
       {
-        StateCode: "UT",
+        Name: "UT",
         Value: 1101,
         ToolTip: [
           { name: "Total Job count", value: 1101 },
@@ -356,7 +378,7 @@ export const TEST_STATE_DATA = [
         ],
       },
       {
-        StateCode: "VT",
+        Name: "VT",
         Value: 6987,
         ToolTip: [
           { name: "Total Job count", value: 6987 },
@@ -364,7 +386,7 @@ export const TEST_STATE_DATA = [
         ],
       },
       {
-        StateCode: "VA",
+        Name: "VA",
         Value: 9234,
         ToolTip: [
           { name: "Total Job count", value: 9234 },
@@ -372,7 +394,7 @@ export const TEST_STATE_DATA = [
         ],
       },
       {
-        StateCode: "WA",
+        Name: "WA",
         Value: 8929,
         ToolTip: [
           { name: "Total Job count", value: 8929 },
@@ -380,7 +402,7 @@ export const TEST_STATE_DATA = [
         ],
       },
       {
-        StateCode: "WV",
+        Name: "WV",
         Value: 288,
         ToolTip: [
           { name: "Total Job count", value: 288 },
@@ -388,7 +410,7 @@ export const TEST_STATE_DATA = [
         ],
       },
       {
-        StateCode: "WI",
+        Name: "WI",
         Value: 5651,
         ToolTip: [
           { name: "Total Job count", value: 5651 },
@@ -396,7 +418,7 @@ export const TEST_STATE_DATA = [
         ],
       },
       {
-        StateCode: "WY",
+        Name: "WY",
         Value: 5573,
         ToolTip: [
           { name: "Total Job count", value: 5573 },
@@ -406,203 +428,203 @@ export const TEST_STATE_DATA = [
     ],
     Salary: [
       {
-        StateCode: "AL",
+        Name: "AL",
         Value: 4798,
       },
       {
-        StateCode: "AK",
+        Name: "AK",
         Value: 1831,
       },
       {
-        StateCode: "AZ",
+        Name: "AZ",
         Value: 3548,
       },
       {
-        StateCode: "AR",
+        Name: "AR",
         Value: 8037,
       },
       {
-        StateCode: "CA",
+        Name: "CA",
         Value: 6243,
       },
       {
-        StateCode: "CO",
+        Name: "CO",
         Value: 6182,
       },
       {
-        StateCode: "CT",
+        Name: "CT",
         Value: 3464,
       },
       {
-        StateCode: "DE",
+        Name: "DE",
         Value: 6130,
       },
       {
-        StateCode: "FL",
+        Name: "FL",
         Value: 5280,
       },
       {
-        StateCode: "GA",
+        Name: "GA",
         Value: 868,
       },
       {
-        StateCode: "HI",
+        Name: "HI",
         Value: 6141,
       },
       {
-        StateCode: "ID",
+        Name: "ID",
         Value: 7045,
       },
       {
-        StateCode: "IL",
+        Name: "IL",
         Value: 4622,
       },
       {
-        StateCode: "IN",
+        Name: "IN",
         Value: 9824,
       },
       {
-        StateCode: "IA",
+        Name: "IA",
         Value: 1982,
       },
       {
-        StateCode: "KS",
+        Name: "KS",
         Value: 3593,
       },
       {
-        StateCode: "KY",
+        Name: "KY",
         Value: 2752,
       },
       {
-        StateCode: "LA",
+        Name: "LA",
         Value: 9024,
       },
       {
-        StateCode: "ME",
+        Name: "ME",
         Value: 4274,
       },
       {
-        StateCode: "MD",
+        Name: "MD",
         Value: 4517,
       },
       {
-        StateCode: "MA",
+        Name: "MA",
         Value: 8264,
       },
       {
-        StateCode: "MI",
+        Name: "MI",
         Value: 4910,
       },
       {
-        StateCode: "MN",
+        Name: "MN",
         Value: 138,
       },
       {
-        StateCode: "MS",
+        Name: "MS",
         Value: 5517,
       },
       {
-        StateCode: "MO",
+        Name: "MO",
         Value: 8722,
       },
       {
-        StateCode: "MT",
+        Name: "MT",
         Value: 253,
       },
       {
-        StateCode: "NE",
+        Name: "NE",
         Value: 2739,
       },
       {
-        StateCode: "NV",
+        Name: "NV",
         Value: 2998,
       },
       {
-        StateCode: "NH",
+        Name: "NH",
         Value: 6056,
       },
       {
-        StateCode: "NJ",
+        Name: "NJ",
         Value: 8645,
       },
       {
-        StateCode: "NM",
+        Name: "NM",
         Value: 7023,
       },
       {
-        StateCode: "NY",
+        Name: "NY",
         Value: 6672,
       },
       {
-        StateCode: "NC",
+        Name: "NC",
         Value: 8382,
       },
       {
-        StateCode: "ND",
+        Name: "ND",
         Value: 1713,
       },
       {
-        StateCode: "OH",
+        Name: "OH",
         Value: 9605,
       },
       {
-        StateCode: "OK",
+        Name: "OK",
         Value: 8617,
       },
       {
-        StateCode: "OR",
+        Name: "OR",
         Value: 3987,
       },
       {
-        StateCode: "PA",
+        Name: "PA",
         Value: 9995,
       },
       {
-        StateCode: "RI",
+        Name: "RI",
         Value: 2089,
       },
       {
-        StateCode: "SC",
+        Name: "SC",
         Value: 8728,
       },
       {
-        StateCode: "SD",
+        Name: "SD",
         Value: 6457,
       },
       {
-        StateCode: "TN",
+        Name: "TN",
         Value: 3392,
       },
       {
-        StateCode: "TX",
+        Name: "TX",
         Value: 4052,
       },
       {
-        StateCode: "UT",
+        Name: "UT",
         Value: 4261,
       },
       {
-        StateCode: "VT",
+        Name: "VT",
         Value: 7271,
       },
       {
-        StateCode: "VA",
+        Name: "VA",
         Value: 477,
       },
       {
-        StateCode: "WA",
+        Name: "WA",
         Value: 2716,
       },
       {
-        StateCode: "WV",
+        Name: "WV",
         Value: 3795,
       },
       {
-        StateCode: "WI",
+        Name: "WI",
         Value: 3724,
       },
       {
-        StateCode: "WY",
+        Name: "WY",
         Value: 151,
       },
     ],

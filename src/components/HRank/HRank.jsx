@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import s from "./style.module.css";
 
-export default function HRank({ selectedCode, data }) {
+export default function HRank({ selectedId, data }) {
   const [toolTip, setToolTip] = useState([]);
   const [sortData, setSortData] = useState([]);
   const [rank, setRank] = useState(0);
@@ -11,7 +11,7 @@ export default function HRank({ selectedCode, data }) {
 
   useEffect(() => {
     const selectedValue = data.find(
-      (item) => item.StateCode === selectedCode
+      (item) => item.Id === selectedId
     )?.Value;
     setValue(selectedValue);
 
@@ -36,7 +36,7 @@ export default function HRank({ selectedCode, data }) {
         setMaxValue(max);
       }
     }
-  }, [data, selectedCode]);
+  }, [data, selectedId]);
 
   const handleMouseEnter = (item) => {
     setToolTip(item);
@@ -54,21 +54,21 @@ export default function HRank({ selectedCode, data }) {
         {sortData &&
           sortData.map((item, index) => (
             <div
-              key={item.StateCode}
+              key={item.Id}
               className={`${s.bar} ${
                 item.Value === value ? s.selectedBar : s.horizontalBar
               }`}
               style={{
-                height: `${(item.Value * 300) / maxValue}px`,
-                width: `${300 / count}px`,
+                height: `${(item.Value * 200) / maxValue}px`,
+                width: `${200 / count}px`,
               }}
               onMouseEnter={() => handleMouseEnter(item)}
               onMouseLeave={handleMouseLeave}
             >
-              {toolTip && toolTip.StateCode === item.StateCode && (
+              {toolTip && toolTip.Id === item.Id && (
                 <div className={s.toolTip} style={{ x: `${index * 10}px` }}>
-                  <div>State Code: {toolTip.StateCode} </div>
-                  <div>Value: {toolTip.Value} </div>
+                  <div>{toolTip.Name} </div>
+                  <div>{toolTip.Value} </div>
                 </div>
               )}
             </div>

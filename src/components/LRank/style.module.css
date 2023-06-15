@@ -1,7 +1,6 @@
 .mainContainer {
   background-color: rgb(12, 31, 50);
   padding: 10px;
-  width: 300px;
 }
 .mainContainer h2 {
   color: red;
