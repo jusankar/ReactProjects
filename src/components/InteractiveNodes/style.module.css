@@ -7,6 +7,8 @@
 }
 .viewBox{
   background-color: #0c1f32;
+  width: 100%;
+  height: 100vh;
 }
 .column1,
 .column2,

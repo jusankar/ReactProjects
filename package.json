@@ -9,6 +9,7 @@
     "bootstrap": "^5.3.0-alpha3",
     "chart.js": "^4.2.1",
     "d3": "^7.8.4",
+    "lc-interactivenodes": "^0.0.2",
     "react": "^18.2.0",
     "react-bootstrap-icons": "^1.10.3",
     "react-chartjs-2": "^5.2.0",
